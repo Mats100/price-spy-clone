@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Price Spy</title>
+    <link rel="stylesheet" href="static/styles.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous"/>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
+            crossorigin="anonymous"></script>
+</head>
+<body>
+<div>
+    <div col-lg-12 col-md-6 col-sm-3>
+        <nav class="navbar navbar-expand-lg navbar-info nav-height background-color">
+            <div class="container-fluid">
+                <button class="navbar-toggler menu-button " type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                    <div class="bar1"></div>
+                    <div class="bar2"></div>
+                    <div class="bar3"></div>
+                </button>
+                <img alt="PriceSpy UK" class="navbar-brand  h-50 fw-bolder text-white font-size logo-img"
+                     src="https://pricespy-75b8.kxcdn.com/g/rfe/logos/logo_gb_v2_light.svg">
+                <div class="collapse navbar-collapse d-flex justify-content-end" id="navbarNavAltMarkup">
+                    {% if not is_user_logged_in %}
+                    <a href="{{ url_for('register') }}" class="btn btn-primary mx-2">Register</a>
+                    <a href="{{ url_for('login') }}" class="btn btn-primary mx-2">Login</a>
+                    {% else %}
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown">
+                            Profile Options
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-item"><a href="{{ url_for('update_account') }}">Update Account</a></li>
+                            <li class="dropdown-item"><a href="{{ url_for('logout') }}">Logout</a></li>
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </nav>
+    </div>
+</div>
+
+<!-- Body Section of our page -->
+<div id="collapsibleContent" class="collapse show">
+    <div class="jdpxj text-center mb-3">
+        <h1 class="text-white hEvqSi kGJdnT">Compare prices from over <span>6100 shops</span></h1>
+        {% if user.is_authenticated %}
+        <p class="user-welcome">Welcome, {{ user.name }}!</p>
+        {% endif %}
+
+        <!-- New Search Bar -->
+        <div class="row mt-3 ">
+            <div class="col-lg-12 col-md-6 offset-md-3 ">
+                <!-- Center the search bar and icon on medium-sized screens -->
+                <div class="input-group position me-2">
+                    <input type="text" class="form-control flex-row " placeholder="Hi, what are you looking for today?">
+                    <button class="btn btn-warning" type="button">
+                        <img src="static/search-icon.png" alt="Search" class="img-fluid" style="max-width: 30px;">
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Slider Area -->
+<section class="slider-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-0">
+                <div class="menu-widget">
+                    <p><i class="fa fa-bars me-2"></i>All Categories</p>
+                    <ul class="list-unstyled">
+
+
+                        <li><a href="" class="rem-underline"><img src="images/sm.png" alt="">Smartphone & Tablet</a>
+                        </li>
+                        <li><a href="" class="rem-underline"><img src="images/com.png" alt="">Computer & Office</a></li>
+                        <li><a href="" class="rem-underline"><img src="images/tv.png" alt="">Home Applience</a></li>
+                        <li><a href="" class="rem-underline"><img src="images/shoe.png" alt="">Leather & Shoes</a></li>
+                        <li><a href="" class="rem-underline"><img src="images/kid.png" alt="">Kids & Babies</a></li>
+                        <li><a href="" class="rem-underline"><img src="images/watch.png" alt="">Jewelary & Watches</a>
+                        </li>
+                        <li><a href="" class="rem-underline"><img src="images/health.png" alt="">Health & Beauty</a>
+                        </li>
+                        <li><a href="" class="rem-underline"><img src="images/car.png" alt="">Automobiles</a></li>
+                        <li><a href="" class="rem-underline"><img src="images/sport.png" alt="">Sports & Outdoors</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-lg-9 col-md-12 padding-fix-l20">
+                <div class="owl-carousel owl-slider">
+                    <div class="slider-item slider-item1">
+                        <img src="#" alt="" class="img1 wow fadeInRight effect" data-wow-duration="1s"
+                             data-wow-delay="0s">
+                        <div class="slider-box">
+                            <div class="slider-table">
+                                <div class="slider-tablecell">
+                                    <div class="wow fadeInUp effect" data-wow-duration="1.2s" data-wow-delay="0.5s">
+                                        <h5>Big Sale</h5>
+                                    </div>
+                                    <div class="wow fadeInUp effect" data-wow-duration="1.2s" data-wow-delay="0.6s">
+                                        <h2>New Product Collection</h2>
+                                    </div>
+                                    <div class="wow fadeInUp effect" data-wow-duration="1.2s" data-wow-delay="0.7s">
+                                        <p>Save Up To 25% Off</p>
+                                    </div>
+                                    <div class="wow fadeInUp effect" data-wow-duration="1.2s" data-wow-delay="0.8s">
+                                        <a href="#" class="rem-underline">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-item slider-item2 ">
+                        <img src="#" alt="" class="img2 wow fadeInRight effect" data-wow-duration="1s"
+                             data-wow-delay="0s">
+                        <div class="slider-box">
+                            <div class="slider-table">
+                                <div class="slider-tablecell text-right">
+                                    <div class="wow fadeInUp effect" data-wow-duration="1.2s" data-wow-delay="0.5s">
+                                        <h5>Home Appliance</h5>
+                                    </div>
+                                    <div class="wow fadeInUp effect" data-wow-duration="1.2s" data-wow-delay="0.6s">
+                                        <h2>Top Quality Products</h2>
+                                    </div>
+                                    <div class="wow fadeInUp effect" data-wow-duration="1.2s" data-wow-delay="0.7s">
+                                        <p>Save Up To 50% Off</p>
+                                    </div>
+                                    <div class="wow fadeInUp effect" data-wow-duration="1.2s" data-wow-delay="0.8s">
+                                        <a href="#" class="rem-underline">Shop Now</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+<!-- End Slider Area -->
+<!-- Card Section -->
+
+<section>
+    <div class="text-center container py-5">
+        <h4 class="mt-4 mb-5 small-screen "><strong style="position: relative;  ">Daily Deals</strong></h4>
+
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card m-1">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light img-container"
+                         data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="static/images/head-phone.jpg"
+                             class="w-100"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset" style="text-decoration: none !important;">
+                            <h5 class="card-title mb-3">Headphones</h5>
+                        </a>
+                        <a href="" class="text-reset rem-underline">
+                            <p>Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <button class="btn btn-primary">Buy Now!!!</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card m-1">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light img-container"
+                         data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="static/images/camera.jpg"
+                             class="w-100"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset " style="text-decoration: none !important;">
+                            <h5 class="card-title mb-3">Camera</h5>
+                        </a>
+                        <a href="" class="text-reset rem-underline">
+                            <p>Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <button class="btn btn-primary">Buy Now!!!</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card m-1">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light img-container"
+                         data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="static/images/shoe.jpg"
+                             class="w-100"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset" style="text-decoration: none !important;">
+                            <h5 class="card-title mb-3">Shoes</h5>
+                        </a>
+                        <a href="" class="text-reset rem-underline">
+                            <p>Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <button class="btn btn-primary">Buy Now!!!</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card m-1">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light img-container"
+                         data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="static/images/watch.jpg"
+                             class="w-100"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset" style="text-decoration: none !important;">
+                            <h5 class="card-title mb-3">Watch</h5>
+                        </a>
+                        <a href="" class="text-reset rem-underline">
+                            <p>Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <button class="btn btn-primary">Buy Now!!!</button>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="mt-4 mb-5 "><strong style="position: relative; ">Popular</strong></h4>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card m-1">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light img-container"
+                         data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="static/images/lipstick.jpg"
+                             class="w-100"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset" style="text-decoration: none !important;">
+                            <h5 class="card-title mb-3">Lipstick</h5>
+                        </a>
+                        <a href="" class="text-reset rem-underline">
+                            <p>Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <button class="btn btn-primary">Buy Now!!!</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card m-1">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light img-container"
+                         data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="static/images/laptop.jpg"
+                             class="w-100"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset" style="text-decoration: none !important;">
+                            <h5 class="card-title mb-3">Laptop</h5>
+                        </a>
+                        <a href="" class="text-reset rem-underline">
+                            <p>Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <button class="btn btn-primary">Buy Now!!!</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+                <div class="card m-1">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light img-container"
+                         data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="static/images/watch2.jpg"
+                             class="w-100"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset" style="text-decoration: none !important;">
+                            <h5 class="card-title mb-3">Watch</h5>
+                        </a>
+                        <a href="" class="text-reset rem-underline">
+                            <p>Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <button class="btn btn-primary">Buy Now!!!</button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-lg-3 col-md-4 col-sm-3 col-xs-12">
+                <div class="card m-1">
+                    <div class="bg-image hover-zoom ripple ripple-surface ripple-surface-light img-container"
+                         data-mdb-ripple-color="light">
+                        <img class="img-fluid" src="static/images/glasses.jpg"
+                             class="w-100"/>
+                        <a href="#!">
+                            <div class="mask">
+                                <div class="d-flex justify-content-start align-items-end h-100">
+                                    <h5><span class="badge bg-primary ms-2">New</span></h5>
+                                </div>
+                            </div>
+                            <div class="hover-overlay">
+                                <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card-body">
+                        <a href="" class="text-reset" style="text-decoration: none !important;">
+                            <h5 class="card-title mb-3">Glasses</h5>
+                        </a>
+                        <a href="" class="text-reset rem-underline">
+                            <p>Category</p>
+                        </a>
+                        <h6 class="mb-3">$61.99</h6>
+                        <button class="btn btn-primary">Buy Now!!!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+
+<!-- footer -->
+<footer class="bg-dark mt-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-md-6 col-sm-12">
+                <h1 class="text-warning fw-bold mt-3">Meta Brains</h1>
+                <p class="text-light ms-3 ">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem velit impedit totam! Cumque
+                    voluptas ipsam reprehenderit ab illum dolores assumenda molestias laborum soluta tempore at,
+                    laudantium reiciendis, doloremque rerum est.
+                </p>
+            </div>
+
+
+            <div class="col-lg-3 col-md-6 col-sm-12 text-light">
+                <h1 class="mt-3 text-warning fw-bold">Services</h1>
+                <ul style="list-style-type: none;">
+                    <li>Ecommerce</li>
+                    <li>SEO</li>
+                    <li>Digital Marketing</li>
+                    <li>Software Development</li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-12 text-light">
+                <h1 class="mt-3 text-warning fw-bold">Links</h1>
+                <ul style="list-style-type: none;" class="me-5">
+                    <li>Facebook</li>
+                    <li>Email</li>
+                    <li>Tiktok</li>
+                    <li>Instagram</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-12 text-light">
+                <h1 class="mt-3 text-warning fw-bold">Contact us</h1>
+                <ul style="list-style-type: none;">
+                    <li>Multan,street 233, House 692</li>
+                    <li>codebase@gmail.com</li>
+                    <li>+92 111 222 333</li>
+                    <li>Website Official</li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
+</footer>
+</body>
+</html>
+
+<script>
+    function myFunction(x) {
+        x.classList.toggle("change");
+    }
+
+    function toggleNav() {
+        let nav = document.getElementById("navbarNav");
+        nav.classList.toggle("show");
+
+        let container = document.querySelector(".container");
+        container.classList.toggle("change");
+    }
+
+</script>
+
+</body>
+</html>
+<!-- how to align input search bar field to center -->
